@@ -1,15 +1,63 @@
-AOS.init();
-// You can also pass an optional settings object
-// below listed default settings
-AOS.init({
-  
-  // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-  offset: 120, // offset (in px) from the original trigger point
-  delay: 0, // values from 0 to 3000, with step 50ms
-  duration: 700, // values from 0 to 3000, with step 50ms
-  easing: 'ease', // default easing for AOS animations
-  once: false, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-  anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
+/*=============== SHOW MENU ===============*/
+const navMenu = document.getElementById('nav-menu'),
+      navToggle = document.getElementById('nav-toggle'),
+      navClose = document.getElementById('nav-close')
 
-});
+/* Menu show */
+navToggle.addEventListener('click', () =>{
+   navMenu.classList.add('show-menu')
+})
+
+/* Menu hidden */
+navClose.addEventListener('click', () =>{
+   navMenu.classList.remove('show-menu')
+})
+
+/*=============== SEARCH ===============*/
+const search = document.getElementById('search'),
+      searchBtn = document.getElementById('search-btn'),
+      searchClose = document.getElementById('search-close')
+
+/* Search show */
+searchBtn.addEventListener('click', () =>{
+   search.classList.add('show-search')
+})
+
+/* Search hidden */
+searchClose.addEventListener('click', () =>{
+   search.classList.remove('show-search')
+})
+
+/*=============== LOGIN ===============*/
+const login = document.getElementById('login'),
+      loginBtn = document.getElementById('login-btn'),
+      loginClose = document.getElementById('login-close')
+
+/* Login show */
+loginBtn.addEventListener('click', () =>{
+   login.classList.add('show-login')
+})
+
+/* Login hidden */
+loginClose.addEventListener('click', () =>{
+   login.classList.remove('show-login')
+})
+
+
+AOS.init();
+
+    let places = document.querySelectorAll(".place-list li");
+    let active = "../img/1.jpg";
+
+    places.forEach((e) => {
+      e.addEventListener("mouseenter", (event) => {
+        places.forEach((e) => {
+          e.classList.remove("active");
+        });
+
+        event.target.classList.add("active");
+        active = event.target.getAttribute("data-img");
+        let banner = document.querySelector(".banner");
+        banner.style.backgroundImage = `url('${active}')`;
+      });
+    });
